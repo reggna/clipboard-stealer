@@ -1,0 +1,7 @@
+Short example of Example of manipulating a copy request using
+clipboard events [1] and the HTML Editing API [2].
+
+This should work in IE, Chrome and Opera (>=15).
+
+[1]: http://www.w3.org/TR/clipboard-apis/#beforecopy-event
+[2]: https://dvcs.w3.org/hg/editing/raw-file/tip/editing.html#selection

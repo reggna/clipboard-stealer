@@ -1,0 +1,28 @@
+<div onbeforecopy="{
+    // Create a hidden element, containing whatever we want to be copied:
+    // This could be pretty much anything (images, links, whatever)
+    var element = document.createElement('div');
+    var content = document.createTextNode(
+        'Some text you just copied.  No, it\'s not only \''
+        + window.getSelection().toString()
+        + '\' that you selected, but actually a lot more.');
+    element.appendChild(content);
+    // Make sure the element isn't visible to the user:
+    element.style.position = 'absolute';
+    element.style.left = '10000px';
+    document.body.style.overflow = 'hidden';
+    // And add it somewhere on the page:
+    document.body.appendChild(element);
+    // Save the current range, so we can restore it later on:
+    var range = window.getSelection().getRangeAt(0);
+    // Select the newly created element:
+    window.getSelection().selectAllChildren(element);
+    // Once the copying is complet, restore the old range selection, so
+    // the user doesn't expect anything:
+    setTimeout(function() {
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.body.removeChild(element);
+    }, 0);
+    return true;
+}">This is text, try copy some and paste it in another window.</div>
